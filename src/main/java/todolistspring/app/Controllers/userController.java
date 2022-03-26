@@ -1,16 +1,14 @@
-package todolistspring.app.Controller;
+package todolistspring.app.Controllers;
 
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import todolistspring.app.Model.User;
-import todolistspring.app.Service.UserService;
+import org.springframework.web.bind.annotation.*;
+import todolistspring.app.Models.User;
+import todolistspring.app.Services.UserService;
 
 @RestController
-@RequestMapping("user/get")
+@RequestMapping("/user")
 public class userController {
     private final UserService userService;
 
@@ -22,6 +20,11 @@ public class userController {
     @GetMapping
     public List<User> getUsers(){
         return userService.getUsers();
+    }
+
+    @PostMapping
+    public void registerNewUse(@RequestBody User user){
+        userService.addNewUser(user);
     }
     
 

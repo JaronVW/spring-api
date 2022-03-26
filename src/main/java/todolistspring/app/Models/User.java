@@ -1,16 +1,33 @@
-package todolistspring.app.Model;
+package todolistspring.app.Models;
 
+import javax.persistence.*;
 import java.time.LocalDate;
 
+@Entity
+@Table
 public class User {
-    private int userID;
+
+    @Id
+    @SequenceGenerator(
+            name = "user_sequence",
+            sequenceName = "user_sequence",
+            allocationSize = 1
+
+    )
+    @GeneratedValue(
+            strategy = GenerationType.SEQUENCE,
+            generator = "user_sequence"
+    )
+
+    private int id;
     private String userName;
     private String password;
     private LocalDate creationDate;
 
-    
+
+
     public User(int userID, String userName, String password, LocalDate creationDate) {
-        this.userID = userID;
+        this.id = userID;
         this.userName = userName;
         this.password = password;
         this.creationDate = creationDate;
@@ -23,8 +40,12 @@ public class User {
         this.creationDate = creationDate;
     }
 
-    public int getUserID() {
-        return userID;
+    public User() {
+
+    }
+
+    public int getId() {
+        return id;
     }
 
 
@@ -43,8 +64,8 @@ public class User {
     }
 
 
-    public void setUserID(int userID) {
-        this.userID = userID;
+    public void setId(int userID) {
+        this.id = userID;
     }
 
 

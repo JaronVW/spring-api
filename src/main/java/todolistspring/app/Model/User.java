@@ -1,4 +1,4 @@
-package todolistspring.app.User;
+package todolistspring.app.Model;
 
 import java.time.LocalDate;
 
